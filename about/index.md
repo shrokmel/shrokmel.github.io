@@ -32,4 +32,4 @@ So, that’s me! If you find my profile interesting, feel free to get in touch.
 * **IT**: 		Linux, Windows, Mac OS, VirtualBox
 * **Skills**: 		Molecular Dynamics, Computational Geometry 
 
-<a markdown="0" href="{{ site.url }}/about/Resume.pdf" class="btn">Resume</a>
+<a markdown="0" href="{{ site.url }}/about/ArvindRavichandran.pdf" class="btn">Resume</a>
