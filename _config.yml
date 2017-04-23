@@ -5,7 +5,7 @@ locale: en_US
 description: Physics - Engineering - Design
 logo: site-logo.png
 search: true
-url: http://localhost:4000
+url: https://github.com/shrokmel/shrokmel.github.io
 
 # Jekyll configuration
 
