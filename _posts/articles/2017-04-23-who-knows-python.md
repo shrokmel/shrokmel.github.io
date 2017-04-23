@@ -3,10 +3,11 @@ layout: post
 title: "Who actually KNOWS Python"
 excerpt: "Custom written post descriptions are the way to go... if you're not lazy."
 categories: articles
-tags: [sample-post, video]
+author: arvind_ravichandran
+tags: [pythonic, idiomatic]
 comments: true
 share: true
-modified: 2016-06-01T14:18:26-04:00
+modified: 2017-04-23T20:08:14-04:00
 ---
 
 I realised how relevant this question really was, only recently, close to five years of actively using and coding in Python. What is "knowing"? When distracted about solving a given problem, it is very tempting to ignore thumbrules on writing good code. And there it is again, what is "good code". Veteran Python developers use the word "pythonic", almost interchangeably with good Python code. As I try to put a finger on what is actually pythonic, I am running the risk of the same issue that St. Augustine faced when trying to define time: "If no one ask of me, I know; if I wish to explain to him who asks, I know not." Nevertheless, let me try and bumble my way through this post, and put up some thumb rules for writing beautiful code.
