@@ -1,0 +1,311 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Distance Calculation &#8211; Arvind Ravichandran</title>
+<meta name="description" content="Efficiently calculating distances between particles using Python.">
+<meta name="keywords" content="python, distance, optimisation">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Distance Calculation">
+<meta name="twitter:description" content="Efficiently calculating distances between particles using Python.">
+
+<meta name="twitter:creator" content="@arvindravich">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/images/site-logo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Distance Calculation">
+<meta property="og:description" content="Efficiently calculating distances between particles using Python.">
+<meta property="og:url" content="http://localhost:4000/articles/distance/">
+<meta property="og:site_name" content="Arvind Ravichandran">
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/articles/distance/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Arvind Ravichandran Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:4000/about/" >About</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/articles/" >Articles</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/search/" >Search</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	<div class="wrap">
+      
+  		<a href="http://localhost:4000/" class="site-logo" rel="home" title="Arvind Ravichandran"><img src="http://localhost:4000/images/site-logo.png" width="200" height="200" alt="Arvind Ravichandran logo" class="animated fadeInDown"></a>
+      
+      <h1 class="site-title animated fadeIn"><a href="http://localhost:4000/">Arvind Ravichandran</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description">Physics - Engineering - Design</h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <ul class="entry-tags">
+          <li><a href="http://localhost:4000/tags/#python" title="Pages tagged python">python</a></li><li><a href="http://localhost:4000/tags/#distance" title="Pages tagged distance">distance</a></li><li><a href="http://localhost:4000/tags/#optimisation" title="Pages tagged optimisation">optimisation</a></li>
+        </ul>
+        
+          <h1 class="entry-title">Distance Calculation</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        
+          <img src="http://localhost:4000/images/arvind-bio.png" class="bio-photo" alt="Arvind Ravichandran bio photo"></a>
+        
+        <span class="author vcard">By <span class="fn">Arvind Ravichandran</span></span>
+        <span class="entry-date date published"><time datetime="2017-04-22T00:00:00+02:00"><i class="fa fa-calendar-o"></i> April 22, 2017</time></span>
+        <span class="entry-date date modified"><time datetime="2017-04-23 08:32:14 +0200"><i class="fa fa-pencil"></i> April 23, 2017</time></span>
+        
+        <span class="social-share-twitter">
+  <a href="https://twitter.com/intent/tweet?hashtags=python,distance,optimisation&amp;text=Distance%20Calculation&amp;url=http://localhost:4000/articles/distance/&amp;via=arvindravich" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
+</span>
+<span class="social-share-facebook">
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/articles/distance/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
+</span>
+<span class="social-share-googleplus">
+  <a href="https://plus.google.com/share?url=http://localhost:4000/articles/distance/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
+</span>
+<!-- /.social-share -->
+        
+      </footer>
+      <div class="entry-content">
+        <p>Time complexity of an algorithm quantifies the amount of time taken for a calculation as a function of the quantity of input. Naively speaking, most molecular dynamics algorithms are of quadratic time complexity, or O(n<sup>2</sup>) problems. This means that as the number of entities or particles, <em>n</em>, in the system increases, the time taken to complete the calculations increases quadratically.</p>
+
+<p>Molecular dynamics algorithms are O(n<sup>2</sup>) because computing distances between particles, when dealt with naively, is of quadratic time complexity. This is also the bottle neck in most algorithms. By way of neighbour lists and cell lists, it is indeed possible to make this logarithmic, but for the purpose of this post, let’s look at tricks to optimise the simple approach using python.</p>
+
+<p>This problem can be most efficiently solved by simply using the <code class="highlighter-rouge">scipy.spatial.distance.pdist</code> function. But this post will help in understanding how to approach this <em>type</em> of problems using Python. For instance, the issue at hand might not always be computing the distance between particles. The problem could be computing the dot product of orientations of all combinations of particle pairs. With this in mind, let us begin!</p>
+
+<h2 id="particles-in-open-boundaries">Particles in open boundaries</h2>
+
+<p>Imagine that you have a system with open boundaries in two dimensions, with <em>N=100</em> particles.</p>
+
+<figure>
+<a href="/sandbox/particles.png"><img src="/sandbox/particles.png" alt="image" /></a>
+<figcaption>Randomly generated positions of 100 particles. </figcaption>
+</figure>
+
+<p>Our goal is to compute the forces (it doesn’t matter what sort of force) between all these particles at a given time step. With the forces, we can calculate their accelerations, from which we obtain velocities and then their displacements. The displacements will tell us their positions in the next time step. We use this to compute the forces and the cycle goes on, for some period of time.</p>
+
+<p>Assuming that these forces are functions of distances, we need to compute the distance between all <em>permutations</em> of particles. We can construct a matrix of distances, which will look like this:</p>
+
+<p>\[
+\begin{pmatrix} 
+d_{1,1}     &amp; d_{1,2} &amp; .. &amp; d_{1,N} \\
+d_{2,1}     &amp; d_{2,2} &amp; .. &amp; d_{2,N} \\ 
+..          &amp; ..      &amp; .. &amp; ..      \\
+d_{N,1}     &amp; d_{N,2} &amp; .. &amp; d_{N,N} \\
+\end{pmatrix}
+\]</p>
+
+<p>We must generate the initial positions of 100 particles, and construct the distance matrix:</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">L</span>   <span class="o">=</span> <span class="mi">100</span>       <span class="c"># simulation box dimension</span>
+<span class="n">N</span>   <span class="o">=</span> <span class="mi">100</span>       <span class="c"># Number of particles</span>
+<span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span>         <span class="c"># Dimensions</span>
+
+<span class="c"># Generate random positions of particles</span>
+<span class="n">r</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">dim</span><span class="p">))</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="n">L</span>
+
+<span class="c"># Compute distance matrix</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c"># This is the N-squared operation</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">dr</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>                  <span class="c"># difference between 2 positions</span>
+        <span class="n">D</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">dr</span><span class="o">*</span><span class="n">dr</span><span class="p">))</span>    <span class="c"># calculate distance and store</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">D</span><span class="p">[:</span><span class="mi">3</span><span class="p">,:</span><span class="mi">3</span><span class="p">])</span>                         <span class="c"># print small section of the matrix</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[[</span>  <span class="mf">0.</span>          <span class="mf">14.47476649</span>  <span class="mf">68.4285819</span> <span class="p">]</span>
+    <span class="p">[</span> <span class="mf">14.47476649</span>   <span class="mf">0.</span>          <span class="mf">53.99224333</span><span class="p">]</span>
+    <span class="p">[</span> <span class="mf">68.4285819</span>   <span class="mf">53.99224333</span>   <span class="mf">0.</span>        <span class="p">]]</span>
+</code></pre>
+</div>
+<h4 id="upper-triangular-distance-matrix">Upper Triangular Distance Matrix</h4>
+
+<p>For 100 particles, in this algorithm, we are making 10,000 distance calculations. We can do better. Firstly, notice that the diagonal values are zero. The distance of a particle with itself is always obviously zero. Secondly, the matrix is symmetric <em>i.e.</em> reversing the order of indices does not affect the calculated distance. So we are computing distances twice, when we can get away with half the number of calculations. We can halve the number of calculations by simply computing the <em>upper triangular</em> matrix of <em>D</em>. The N-squared operation will then become:</p>
+
+<h5 id="code-1">Code 1</h5>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># This is the N-squared operation</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>              <span class="c"># j&gt;i (second index is always greater than first)</span>
+        <span class="n">dr</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>                  <span class="c"># difference between 2 positions</span>
+        <span class="n">D</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">dr</span><span class="o">*</span><span class="n">dr</span><span class="p">))</span>    <span class="c"># calculate distance and store</span>
+</code></pre>
+</div>
+
+<p>We have now decreased the number of calculations to 4,950. In terms of the algorithm, there isn’t much more that we can do. However, we can do a lot better if we learn some pythonic tricks.</p>
+
+<ul>
+  <li>Perform expensive numpy functions such as, <code class="highlighter-rouge">np.sqrt</code>, as few times as possible. For instance, the solution will be identical, if we take the square root of the matrix, after the squared distances are calculated.</li>
+  <li>As much as possible avoid explicit for loops. They are slow in Python. If you find a way to offload looping duties to Python implicity, you will generally get much more readable and faster code.</li>
+  <li>Reduce data access. So far, we created an array of zeros, and updated their values by accessing them. This is inefficient.</li>
+</ul>
+
+<p>With just these three things in mind, let’s do something better! For this we need to learn a neat numpy function called <code class="highlighter-rouge">np.triu_indices</code>. This gives the upper triangular matrix indices <em>i.e.</em> exactly the same indices that we were generating using our range function in a for loop.</p>
+
+<h5 id="code-2">Code 2</h5>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">L</span>   <span class="o">=</span> <span class="mi">100</span>       <span class="c"># simulation box dimension</span>
+<span class="n">N</span>   <span class="o">=</span> <span class="mi">100</span>       <span class="c"># Number of particles</span>
+<span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span>         <span class="c"># Dimensions</span>
+
+<span class="c"># Generate random positions of particles</span>
+<span class="n">r</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">dim</span><span class="p">))</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="n">L</span>
+
+<span class="c"># uti is a list of two (1-D) numpy arrays  </span>
+<span class="c"># containing the indices of the upper triangular matrix</span>
+<span class="n">uti</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu_indices</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>        <span class="c"># k=1 eliminates diagonal indices</span>
+
+<span class="c"># uti[0] is i, and uti[1] is j from the previous example </span>
+<span class="n">dr</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="n">uti</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">-</span> <span class="n">r</span><span class="p">[</span><span class="n">uti</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>            <span class="c"># computes differences between particle positions</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">dr</span><span class="o">*</span><span class="n">dr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>    <span class="c"># computes distances; D is a 4950 x 1 np array</span>
+</code></pre>
+</div>
+
+<p>We have done in three lines, what we previously achieved in five, and we have no more for loops. Timing them on my computer shows the gulf of performance that we have achieved for 1000 particles: Code 1 takes around 3.4 seconds, and Code 2 takes around 0.0005 seconds. Perhaps you noticed that I did cheat a little by not generating a <em>NxN</em> matrix, as in Code 1. But even recasting the values using <code class="highlighter-rouge">scipy.spatial.distance.squareform</code> into a <em>NxN</em> matrix does not slow the code significantly.</p>
+
+<p>The easiest method to solve this problem, as I mentined earlier, is to use the <code class="highlighter-rouge">scipy.spatial.distance.pdist</code> function. Its a one-liner:</p>
+
+<h5 id="code-3">Code 3</h5>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="kn">import</span> <span class="n">pdist</span>
+
+<span class="n">L</span>   <span class="o">=</span> <span class="mi">100</span>       <span class="c"># simulation box dimension</span>
+<span class="n">N</span>   <span class="o">=</span> <span class="mi">100</span>       <span class="c"># Number of particles</span>
+<span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span>         <span class="c"># Dimensions</span>
+
+<span class="c"># Generate random positions of particles</span>
+<span class="n">r</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">dim</span><span class="p">))</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="n">L</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">pdist</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>However, to my surprise, I found that this was slower than Code 2.</p>
+
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2017 Arvind Ravichandran. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/so-simple-jekyll-theme/" rel="nofollow">So Simple Theme</a>.</span>
+<div class="social-icons">
+	
+	
+	
+	
+	
+	
+	
+	
+	
+  
+	
+  <a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:4000';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

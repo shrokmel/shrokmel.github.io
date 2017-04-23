@@ -1,0 +1,49 @@
+[
+
+  
+    {
+      "title"			: "Distance Calculation",
+      "link"			: "http://localhost:4000/articles/distance/",
+      "excerpt"		: "Efficiently calculating distances between particles using Python."
+    }
+  
+
+
+
+  
+
+  
+
+  
+
+  
+    ,{
+      "title"			: "About Me",
+      "link"			: "http://localhost:4000/about/",
+      "excerpt"		: "Arvind Ravichandran"
+    }
+  
+
+  
+
+  
+
+  
+    ,{
+      "title"			: "Theme Setup",
+      "link"			: "http://localhost:4000/theme-setup/",
+      "excerpt"		: "Instructions on how to install and customize the Jekyll theme So Simple."
+    }
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+]
