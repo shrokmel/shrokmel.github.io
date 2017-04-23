@@ -18,7 +18,7 @@ The person who made me such a proponent of the language, Ryan Bradley, once said
 
 For a terribly long time, I'm embarrased to admit, I had been oblivious to the Python faux pas that I had been committing. I became acutely aware of my inefficiencies largely after watching this video by Raymond Hettinger. 
 
-<iframe width="560" height="315" src="https://youtu.be/OSGv2VnC0go" frameborder="0"> </iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=OSGv2VnC0go&feature=youtu.be" frameborder="0"> </iframe>
 
 After the video, I left Python 2.7 for Python 3.6, and made it a point to consciously write pythonic code. Here is a collection of tricks that I have collated over this period (particularly in the context of scientific computing).
 
